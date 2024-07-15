@@ -1,0 +1,65 @@
+<!-- 27. Write a JavaScript function that returns the longest palindrome in a given 
+string.   -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Longest Palindrome in string</title>
+  </head>
+  <body>
+    <h1>Find Longest Palindrome in a String</h1>
+    <form id="palindromeForm">
+      <label for="inputString">Enter a string:</label>
+      <input type="text" id="inputString" name="inputString" required />
+      <br />
+      <button type="submit">Find Longest Palindrome</button>
+    </form>
+    <h2>Result:</h2>
+    <p id="result"></p>
+
+    <script>
+      document
+        .getElementById("palindromeForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          let inputString = document.getElementById("inputString").value;
+          let result = longestPalindrome(inputString);
+          document.getElementById(
+            "result"
+          ).textContent = `Longest palindrome is: ${result}`;
+        });
+      function longestPalindrome(str) {
+        if (!str || str.length === 0) {
+          return "";
+        }
+
+        let longest = "";
+
+        for (let i = 0; i < s.length; i++) {
+          let oddPalindrome = expandAroundCenter(s, i, i);
+          let evenPalindrome = expandAroundCenter(s, i, i + 1);
+
+          if (oddPalindrome.length > longest.length) {
+            longest = oddPalindrome;
+          }
+          if (evenPalindrome.length > longest.length) {
+            longest = evenPalindrome;
+          }
+        }
+
+        return longest;
+      }
+
+      function expandAroundCenter(s, left, right) {
+        while (left >= 0 && right < s.length && s[left] === s[right]) {
+          left--;
+          right++;
+        }
+        return s.substring(left + 1, right);
+      }
+    </script>
+  </body>
+</html>

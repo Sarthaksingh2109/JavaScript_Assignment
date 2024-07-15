@@ -1,0 +1,62 @@
+<!-- 8. Write a JavaScript program for binary search.  
+Sample array : [0,1,2,3,4,5,6] 
+console.log(l.br_search(5)) will return '5'   -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary Search</title>
+  </head>
+  <body>
+    <h1>Binary Search using Recursion</h1>
+    <form id="binarySearchForm">
+      <label for="array">Enter sorted array (comma-separated):</label><br />
+      <input type="text" id="array" name="array" required /><br />
+      <label for="target">Enter target number:</label><br />
+      <input type="number" id="target" name="target" required /><br />
+      <button type="submit">Search</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+      document
+        .getElementById("binarySearchForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          let arrayInput = document.getElementById("array").value.trim();
+          let target = parseInt(document.getElementById("target").value);
+
+          let arr = arrayInput.split(",").map(Number);
+
+          let result = binarySearch(arr, 0, arr.length - 1, target);
+
+          if (result !== -1) {
+            document.getElementById(
+              "result"
+            ).textContent = `Target ${target} found at index ${result}`;
+          } else {
+            document.getElementById(
+              "result"
+            ).textContent = `Target ${target} not found in the array`;
+          }
+        });
+
+      function binarySearch(arr, left, right, key) {
+        if (left > right) {
+          return -1;
+        }
+        let mid = Math.floor((left + right) / 2);
+        if (arr[mid] === key) {
+          return mid;
+        } else if (arr[mid] < key) {
+          return binarySearch(arr, mid + 1, right, key);
+        } else {
+          return binarySearch(arr, left, mid - 1, key);
+        }
+      }
+    </script>
+  </body>
+</html>

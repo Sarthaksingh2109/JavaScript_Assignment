@@ -1,0 +1,25 @@
+<!-- 29. Write a JavaScript function to get the function name.  -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get Function Name Example</title>
+  </head>
+  <body>
+    <h1>Get Function Name Example</h1>
+    <button id="display" onclick="displayFunctionName()">
+      Display Function Name
+    </button>
+
+    <script>
+      function abc() {
+        return arguments.callee.name;
+      }
+
+      function displayFunctionName() {
+        document.getElementById("display").innerText = abc();
+      }
+    </script>
+  </body>
+</html>

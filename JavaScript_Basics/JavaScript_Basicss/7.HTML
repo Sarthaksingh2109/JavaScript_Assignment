@@ -1,0 +1,40 @@
+<!-- 7. Write a JavaScript program to find 1st January be a Sunday between 2014 
+and 2050.   -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Sunday</title>
+  </head>
+  <body>
+    <h1>Years with January 1st on a Sunday</h1>
+    <p id="result"></p>
+
+    <script>
+      function findSundayYear() {
+        const startYear = 2014;
+        const endYear = 2050;
+        const sundayYear = [];
+
+        for (let year = startYear; year <= endYear; year++) {
+          const date = new Date(year, 0, 1);
+          if (date.getDay() === 0) {
+            sundayYear.push(year);
+          }
+        }
+
+        return sundayYear;
+      }
+
+      function displaySundayYear() {
+        const sundayYear = findSundayYear();
+        const resultElement = document.getElementById("result");
+        resultElement.textContent = `Jan 1st sunday is in the following year ${sundayYear.join(' , ')}`;
+      }
+
+      displaySundayYear();
+    </script>
+  </body>
+</html>

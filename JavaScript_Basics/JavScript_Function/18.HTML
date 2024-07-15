@@ -1,0 +1,63 @@
+<!-- 18. Write a function for searching JavaScript arrays with a binary search.  
+Note : A binary search searches by splitting an array into smaller and smaller 
+chunks until it finds the desired value.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary Search</title>
+  </head>
+  <body>
+    <h1>Binary Search in JavaScript</h1>
+    <form id="binarySearchForm">
+      <label for="inputArray">Enter a sorted array (comma-separated):</label>
+      <input type="text" id="inputArray" name="inputArray" required />
+      <br />
+      <label for="targetValue">Enter the target value:</label>
+      <input type="number" id="targetValue" name="targetValue" required />
+      <br />
+      <button type="submit">Search</button>
+    </form>
+    <h2>Result:</h2>
+    <p id="result"></p>
+
+    <script>
+      document.getElementById("binarySearchForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        let inputArray = document.getElementById("inputArray").value.split(",").map(Number);
+        let targetValue = Number(document.getElementById("targetValue").value);
+        
+        let result = binarySearch(inputArray, targetValue);
+        
+        if (result !== -1) {
+          document.getElementById("result").innerText = `Target found at index: ${result}`;
+        } else {
+          document.getElementById("result").innerText = "Target not found";
+        }
+      });
+
+      function binarySearch(arr, key) {
+        let start = 0;
+        let end = arr.length - 1;
+        
+        while (start <= end) {
+          let mid = Math.floor((start + end) / 2);
+          
+          if (arr[mid] === key) {
+            return mid;
+          } else if (arr[mid] < key) {
+            start = mid + 1;
+          } else {
+            end = mid - 1;
+          }
+        }
+        
+        return -1;
+      }
+    </script>
+  </body>
+</html>
+

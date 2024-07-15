@@ -1,0 +1,78 @@
+<!-- 6. Write a JavaScript program which compute, the average marks of the following 
+students Then, this average is used to determine the corresponding grade.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compute Average Marks and Grades</title>
+  </head>
+  <body>
+    <h1>Compute Average Marks and Grades</h1>
+    <table>
+      <tr>
+        <th>Student Name</th>
+        <th>Marks</th>
+        <th>Grade</th>
+      </tr>
+      <tr>
+        <td>David</td>
+        <td>80</td>
+        <td id="gradeDavid"></td>
+      </tr>
+      <tr>
+        <td>Vinoth</td>
+        <td>77</td>
+        <td id="gradeVinoth"></td>
+      </tr>
+      <tr>
+        <td>Divya</td>
+        <td>88</td>
+        <td id="gradeDivya"></td>
+      </tr>
+      <tr>
+        <td>Ishitha</td>
+        <td>95</td>
+        <td id="gradeIshitha"></td>
+      </tr>
+      <tr>
+        <td>Thomas</td>
+        <td>68</td>
+        <td id="gradeThomas"></td>
+      </tr>
+      <tr>
+        <td><strong>Average Marks</strong></td>
+        <td id="averageMarks"></td>
+        <td></td>
+      </tr>
+    </table>
+
+    <script>
+      const marks = [80, 77, 88, 95, 68];
+
+      const average = marks.reduce((acc, curr) => acc + curr, 0) / marks.length;
+      document.getElementById("averageMarks").textContent = average.toFixed(2);
+
+      function getGrade(mark) {
+        if (mark < 60) {
+          return "F";
+        } else if (mark < 70) {
+          return "D";
+        } else if (mark < 80) {
+          return "C";
+        } else if (mark < 90) {
+          return "B";
+        } else {
+          return "A";
+        }
+      }
+
+      document.getElementById("gradeDavid").textContent = getGrade(80);
+      document.getElementById("gradeVinoth").textContent = getGrade(77);
+      document.getElementById("gradeDivya").textContent = getGrade(88);
+      document.getElementById("gradeIshitha").textContent = getGrade(95);
+      document.getElementById("gradeThomas").textContent = getGrade(68);
+    </script>
+  </body>
+</html>

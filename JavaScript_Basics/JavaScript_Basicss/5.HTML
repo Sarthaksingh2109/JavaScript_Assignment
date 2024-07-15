@@ -1,0 +1,29 @@
+<!-- 5. Write a JavaScript program to rotate the string 'w3resource' in right direction 
+by periodically removing one letter from the end of the string and attaching it to 
+the front.   -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Rotation</title>
+</head>
+<body>
+    <p id="rotating-string">w3resource</p>
+    <button onclick="rotatingString()">Rotate String</button>
+    <script>
+        function rotatingString(){
+            const element = document.getElementById("rotating-string");
+            let text = element.textContent;
+
+        text = text.split("");
+        text.reverse();
+        text = text.join();
+
+        element.textContent=text;
+        }
+
+    </script>
+</body>
+</html>

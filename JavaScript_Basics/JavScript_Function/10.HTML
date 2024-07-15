@@ -1,0 +1,49 @@
+<!-- 10. Write a JavaScript function which returns the n rows by n columns identity 
+matrix.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>identity matrix</title>
+  </head>
+  <body>
+    <h1>Generate Identity Matrix</h1>
+    <input
+      type="number"
+      id="matrixSize"
+      placeholder="Enter matrix size"
+      min="1"
+    />
+    <button onclick="displayIdentityMatrix()">Generate</button>
+    <pre id="result"></pre>
+
+    <script>
+      function identityMatrix(n) {
+        let matrix = [];
+        for (let i = 0; i < n; i++) {
+          let row = [];
+          for (let j = 0; j < n; j++) {
+            row.push(i === j ? 1 : 0);
+          }
+          matrix.push(row);
+        }
+        return matrix;
+      }
+
+      function displayIdentityMatrix() {
+        let size = document.getElementById("matrixSize").value;
+        if (size < 1) {
+          document.getElementById("result").textContent =
+            "Please enter a valid size.";
+          return;
+        }
+        let matrix = identityMatrix(size);
+        document.getElementById("result").textContent = matrix
+          .map((row) => row.join(" "))
+          .join("\n");
+      }
+    </script>
+  </body>
+</html>

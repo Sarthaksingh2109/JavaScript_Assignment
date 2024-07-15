@@ -1,0 +1,57 @@
+<!-- 25. Write a JavaScript function that accept a list of country names as input and 
+returns the longest country name as output.   
+Sample function : Longest_Country_Name(["Australia", "Germany", "United 
+States of America"]) 
+Expected output : "United States of America"  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Longest Country name</title>
+  </head>
+  <body>
+    <h1>Find the Longest Country Name</h1>
+    <form id="countryForm">
+      <label for="countryNames">Enter country names (comma-separated):</label>
+      <input type="text" id="countryNames" name="countryNames" required />
+      <br />
+      <button type="submit">Find Longest Name</button>
+    </form>
+    <h2>Longest Country Name:</h2>
+    <p id="result"></p>
+
+    <script>
+      document
+        .getElementById("countryForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          document
+            .getElementById("countryForm")
+            .addEventListener("submit", function (event) {
+              event.preventDefault();
+
+              let countryNames = document
+                .getElementById("countryNames")
+                .value.split(",")
+                .map((name) => name.trim());
+              let result = longestCountryName(countryNames);
+              document.getElementById(
+                "result"
+              ).textContent = `Longest country name is: ${result}`;
+            });
+        });
+      function longestCountryName(countries) {
+        let longestName = "";
+        for (let i = 0; i < countries.length; i++) {
+          if (countries[i].length > longestName.length) {
+            longestName = countries[i];
+          }
+        }
+        return longestName;
+      }
+    </script>
+  </body>
+</html>

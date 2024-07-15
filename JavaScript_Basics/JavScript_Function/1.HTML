@@ -1,0 +1,37 @@
+<!-- 1. Write a JavaScript function that reverse a number.  
+Example x = 32243; 
+Expected Output : 34223   -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reverse a Number</title>
+  </head>
+  <body>
+    <h1>Reverse a Number</h1>
+    <input type="number" id="numberInput" placeholder="Enter a number" />
+    <button onclick="displayReversedNumber()">Reverse</button>
+    <p id="result"></p>
+
+    <script>
+      function reverseNumber(number) {
+        let numberStr = number.toString();
+
+        let reverseStr = numberStr.split("").reverse().join("");
+
+        let reversedNum = parseInt(reverseStr);
+
+        return reversedNum;
+      }
+
+      function displayReversedNumber() {
+        let inputNumber = document.getElementById("numberInput").value;
+        let reversedNumber = reverseNumber(inputNumber);
+        document.getElementById("result").textContent =
+          "Reversed Number: " + reversedNumber;
+      }
+    </script>
+  </body>
+</html>

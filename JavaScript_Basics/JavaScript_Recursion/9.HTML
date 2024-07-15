@@ -1,0 +1,80 @@
+<!-- 9. Write a merge sort program in JavaScript.  
+Sample array : [34,7,23,32,5,62] 
+Sample output : [5, 7, 23, 32, 34, 62]  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Merge Sort</title>
+  </head>
+  <body>
+    <h1>Merge Sort in JavaScript</h1>
+    <form id="mergeSortForm">
+      <label for="inputArray">Enter numbers (comma-separated):</label><br />
+      <input type="text" id="inputArray" name="inputArray" required /><br />
+      <button type="submit">Sort</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+      document
+        .getElementById("mergeSortForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          let inputArray = document
+            .getElementById("inputArray")
+            .value.trim()
+            .split(",")
+            .map(Number);
+          let sortedArray = mergeSort(inputArray);
+          document.getElementById(
+            "result"
+          ).textContent = `Sorted Array: [${sortedArray}]`;
+        });
+      function mergeSort(arr) {
+        if (arr.length <= 1) {
+          return arr;
+        }
+
+        let middle = Math.floor(arr.length / 2);
+        let leftHalf = arr.slice(0, middle);
+        let rightHalf = arr.slice(middle);
+
+        let sortedLeft = mergeSort(leftHalf);
+        let sortedRight = mergeSort(rightHalf);
+
+        return merge(sortedLeft, sortedRight);
+      }
+
+      function merge(left, right) {
+        let sortedArray = [];
+        let leftIndex = 0;
+        let rightIndex = 0;
+
+        while (leftIndex < left.length && rightIndex < right.length) {
+          if (left[leftIndex] < right[rightIndex]) {
+            sortedArray.push(left[leftIndex]);
+            leftIndex++;
+          } else {
+            sortedArray.push(right[rightIndex]);
+            rightIndex++;
+          }
+        }
+
+        while (leftIndex < left.length) {
+          sortedArray.push(left[leftIndex]);
+          leftIndex++;
+        }
+
+        while (rightIndex < right.length) {
+          sortedArray.push(right[rightIndex]);
+          rightIndex++;
+        }
+
+        return sortedArray;
+      }
+    </script>
+  </body>
+</html>

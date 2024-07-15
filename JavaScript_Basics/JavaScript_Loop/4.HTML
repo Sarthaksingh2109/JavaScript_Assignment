@@ -1,0 +1,41 @@
+<!-- 4. Write a JavaScript conditional statement to find the largest of five numbers. 
+Display an alert box to show the result.   
+Sample numbers : -5, -2, -6, 0, -1  
+Output : 0  -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Largest Number</title>
+</head>
+<body>
+    <h1>Finding the Largest of Five Numbers</h1>
+    <script>
+        let num1 = -5;
+    let num2 = -2;
+    let num3 = -6;
+    let num4 = 0;
+    let num5 = -1;
+
+    let largestNumber = num1;
+
+    if (num2 > largestNumber) {
+      largestNumber = num2;
+    }
+    if (num3 > largestNumber) {
+      largestNumber = num3;
+    }
+    if (num4 > largestNumber) {
+      largestNumber = num4;
+    }
+    if (num5 > largestNumber) {
+      largestNumber = num5;
+    }
+
+    alert(`The largest number is: ${largestNumber}`);
+    </script>
+</body>
+</html>

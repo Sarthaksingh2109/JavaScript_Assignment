@@ -1,0 +1,47 @@
+<!-- 2. Write a JavaScript program to find the greatest common divisor (gcd) of two 
+positive numbers.   -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Greatest common divisor</title>
+  </head>
+  <body>
+    <h1>GCD Calculation</h1>
+    <form id="gcdForm">
+      <label for="number1">Enter the first number:</label>
+      <input type="number" id="number1" name="number1" required />
+      <br />
+      <label for="number2">Enter the second number:</label>
+      <input type="number" id="number2" name="number2" required />
+      <br />
+      <button type="submit">Calculate GCD</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+      document
+        .getElementById("gcdForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          let number1 = parseInt(document.getElementById("number1").value);
+          let number2 = parseInt(document.getElementById("number2").value);
+
+          let result = greatestCommonDivisor(number1, number2);
+          document.getElementById(
+            "result"
+          ).innerText = `GCD of ${number1} and ${number2} is: ${result}`;
+        });
+
+      function greatestCommonDivisor(a, b) {
+        while (b !== 0) {
+          [a, b] = [b, a % b];
+        }
+        return a;
+      }
+    </script>
+  </body>
+</html>

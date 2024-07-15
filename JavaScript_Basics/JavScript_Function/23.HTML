@@ -1,0 +1,63 @@
+<!-- 23. Write a JavaScript function to find the first not repeated character.  
+Sample arguments : 'abacddbec'  
+Expected output : 'e'   -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>first not repeated character</title>
+  </head>
+  <body>
+    <h1>Find First Non-Repeated Character</h1>
+    <form id="nonRepeatedCharForm">
+      <label for="inputString">Enter a string:</label>
+      <input type="text" id="inputString" name="inputString" required />
+      <br />
+      <button type="submit">Find Character</button>
+    </form>
+    <h2>Result:</h2>
+    <p id="result"></p>
+
+    <script>
+      document
+        .getElementById("nonRepeatedCharForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          let inputString = document.getElementById("inputString").value;
+          let result = nonRepeatedCharForm(inputString);
+          if (result) {
+            document.getElementById(
+              "result"
+            ).innerText = `The first non-repeated character is: ${result}`;
+          } else {
+            document.getElementById("result").innerText =
+              "No non-repeated character found.";
+          }
+        });
+
+      function nonRepeatedCharForm(str) {
+        let charCount = {};
+
+        for (let i = 0; i < str.length; i++) {
+          let char = str[i];
+          if (charCount[char] === undefined) {
+            charCount[char] = 1;
+          } else {
+            charCount[char]++;
+          }
+        }
+        for (let i = 0; i < str.length; i++) {
+          let char = str[i];
+          if (charCount[char] === 1) {
+            return char;
+          }
+        }
+
+        return null;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Element Greater Than a Number</title>
+</head>
+<body>
+    <h1>Filter Elements Larger Than a Given Number</h1>
+    <form id="filterForm">
+        <label for="inputArray">Enter an array (comma-separated):</label>
+        <input type="text" id="inputArray" name="inputArray" required />
+        <br />
+        <label for="targetNumber">Enter the target number:</label>
+        <input type="number" id="targetNumber" name="targetNumber" required />
+        <br />
+        <button type="submit">Filter</button>
+    </form>
+    <h2>Result:</h2>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById("filterForm").addEventListener("submit", function(event){
+            event.preventDefault();
+
+            let inputArray = document.getElementById("inputArray").value.split(',').map(Number);
+            let targetNumber = Number(document.getElementById("targetNumber").value);
+
+            let result = getElementsLargerThan(inputArray, targetNumber);
+            document.getElementById('result').innerText = `Elements larger than ${targetNumber}: ${result.join(', ')}`;
+        });
+
+        function getElementsLargerThan(arr, num){
+            return arr.filter(element => element > num);
+        }
+    </script>
+</body>
+</html>

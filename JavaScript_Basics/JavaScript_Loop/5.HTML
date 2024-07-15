@@ -1,0 +1,34 @@
+<!-- 5. Write a JavaScript for loop that will iterate from 0 to 15. For each iteration, it 
+will check if the current number is odd or even, and display a message to the 
+screen.   
+Sample Output :  
+"0 is even"  
+"1 is odd"  
+"2 is even"  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Odd or Even Check</h1>
+    <div id="output"></div>
+
+    <script>
+      for (let i = 0; i <= 15; i++) {
+        const p = document.createElement("p");
+
+        if (i % 2 === 0) {
+          p.textContent = `${i} is even`;
+        } else {
+          p.textContent = `${i} is odd`;
+        }
+
+        document.getElementById("output").appendChild(p);
+      }
+    </script>
+  </body>
+</html>

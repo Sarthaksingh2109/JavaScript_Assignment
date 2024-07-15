@@ -1,0 +1,29 @@
+<!-- 12. Write a JavaScript program to sum the multiples of 3 and 5 under 1000.   -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sum of Multiples of 3 and 5</title>
+  </head>
+  <body>
+    <h1>Sum of Multiples of 3 and 5 under 1000</h1>
+    <button onclick="calculateSum()">Calculate Sum</button>
+    <p id="result"></p>
+
+    <script>
+      function calculateSum() {
+        let sum = 0;
+        for (let i = 1; i < 1000; i++) {
+          if (i % 3 === 0 || i % 5 === 0) {
+            sum += i;
+          }
+        }
+        document.getElementById(
+          "result"
+        ).textContent = `The sum of multiples of 3 and 5 under 1000 is ${sum}`;
+      }
+    </script>
+  </body>
+</html>

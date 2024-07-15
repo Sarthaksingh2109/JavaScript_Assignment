@@ -1,0 +1,49 @@
+<!-- 5. Write a JavaScript program to compute the exponent of a number.  
+Note : The exponent of a number says how many times the base number is used 
+as a factor.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compute Exponent</title>
+  </head>
+  <body>
+    <h1>Exponent Calculation</h1>
+    <form id="exponentForm">
+      <label for="base">Enter the base number:</label>
+      <input type="number" id="base" name="base" required />
+      <br />
+      <label for="exponent">Enter the exponent:</label>
+      <input type="number" id="exponent" name="exponent" required />
+      <br />
+      <button type="submit">Calculate Exponent</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+      document
+        .getElementById("exponentForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          let base = parseFloat(document.getElementById("base").value);
+          let exponent = parseFloat(document.getElementById("exponent").value);
+
+          let result = calculateExponent(base, exponent);
+          document.getElementById("result").textContent = `Result is ${result}`;
+        });
+
+      function calculateExponent(base, exponent) {
+        if (exponent === 0) {
+          return 1;
+        } else if (exponent < 0) {
+          return 1 / calculateExponent(base, -exponent);
+        } else {
+          return base * calculateExponent(base, exponent - 1);
+        }
+      }
+    </script>
+  </body>
+</html>

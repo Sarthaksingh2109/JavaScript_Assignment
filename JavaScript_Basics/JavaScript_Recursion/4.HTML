@@ -1,0 +1,47 @@
+<!-- 4. Write a JavaScript program to compute the sum of an array of integers.  
+Example : var array = [1, 2, 3, 4, 5, 6] 
+Expected Output : 21 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sum of an Array</title>
+  </head>
+  <body>
+    <h1>Sum of Array of Integers</h1>
+    <form id="sumForm">
+      <label for="inputArray"
+        >Enter an array of integers (comma-separated):</label
+      >
+      <input type="text" id="inputArray" name="inputArray" required />
+      <br />
+      <button type="submit">Compute Sum</button>
+    </form>
+    <p id="result"></p>
+    <script>
+      document
+        .getElementById("sumForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          let inputArray = document
+            .getElementById("inputArray")
+            .value.split(",")
+            .map(Number);
+          let result = sum(inputArray);
+          document.getElementById(
+            "result"
+          ).innerText = `Sum of the array is: ${result}`;
+        });
+      function sum(arr) {
+        let sum = arr.reduce(
+          (accumalator, currentValue) => accumalator + currentValue,
+          0
+        );
+        return sum;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!-- 13. Write a JavaScript function to compute the factors of a positive integer.   -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Factor of number</title>
+  </head>
+  <body>
+    <h1>Compute Factors of a Positive Integer</h1>
+    <input
+      type="number"
+      id="numberInput"
+      placeholder="Enter a positive integer"
+    />
+    <button onclick="displayFactors()">Compute Factors</button>
+    <p id="result"></p>
+
+    <script>
+      function computeFactors(num) {
+        if (num <= 0) {
+          return "Please enter a positive integer.";
+        }
+
+        let factors = [];
+        for (let i = 1; i <= num; i++) {
+          if (num % i === 0) {
+            factors.push(i);
+          }
+        }
+        return factors;
+      }
+
+      function displayFactors() {
+        const input = document.getElementById("numberInput").value;
+        const number = parseInt(input);
+
+        if (isNaN(number) || number <= 0) {
+          document.getElementById("result").textContent =
+            "Please enter a positive integer.";
+          return;
+        }
+
+        const factors = computeFactors(number);
+        document.getElementById(
+          "result"
+        ).textContent = `Factors of ${number} : ${factors.join(",")}`;
+      }
+    </script>
+  </body>
+</html>

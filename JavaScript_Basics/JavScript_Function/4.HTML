@@ -1,0 +1,35 @@
+<!-- 4. Write a JavaScript function that returns a passed string with letters in 
+alphabetical order. 
+Example string : 'webmaster'  
+Expected Output : 'abeemrstw' 
+Assume punctuation and numbers symbols are not included in the passed string.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>letters in alphabetical order</title>
+  </head>
+  <body>
+    <h1>Sort String Alphabetically</h1>
+    <input type="text" id="stringInput" placeholder="Enter a string" />
+    <button onclick="displaySortedString()">Sort</button>
+    <p id="result"></p>
+
+    <script>
+      function sortStringAlphabetically(str) {
+        let charArray = str.split("");
+        charArray.sort();
+        let sortedArray = charArray.join("");
+        return sortedArray;
+      }
+
+      function displaySortedString() {
+        let inputString = document.getElementById("stringInput").value;
+        let sortedString = sortStringAlphabetically(inputString);
+        document.getElementById("result").textContent = sortedString;
+      }
+    </script>
+  </body>
+</html>

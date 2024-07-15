@@ -1,0 +1,64 @@
+<!-- 8. According to Wikipedia a happy number is defined by the following process :  
+"Starting with any positive integer, replace the number by the sum of the squares 
+of its digits, and repeat the process until the number equals 1 (where it will stay), 
+or it loops endlessly in a cycle which does not include 1. Those numbers for 
+which this process ends in 1 are happy numbers, while those that do not end in 1 
+are unhappy numbers (or sad numbers)".  
+Write a JavaScript program to find and print the first 5 happy numbers. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Number</title>
+  </head>
+  <body>
+    <h1>First 5 Happy Numbers</h1>
+    <ul id="happyNumbers"></ul>
+    <script>
+      function sumOfSquares(num) {
+        let sum = 0;
+        while (num > 0) {
+          let digit = num % 10;
+          sum += digit * digit;
+          num = Math.floor(num / 10);
+        }
+        return sum;
+      }
+
+      function isHappyNumber(num) {
+        let seenNumbers = new Set();
+
+        while (num !== 1 && !seenNumbers.has(num)) {
+          seenNumbers.add(num);
+          num = sumOfSquares(num);
+        }
+
+        return num === 1;
+      }
+
+      function findHappyNumbers(n) {
+        let happyNumbers = [];
+        let num = 1;
+
+        while (happyNumbers.length < n) {
+          if (isHappyNumber(num)) {
+            happyNumbers.push(num);
+          }
+          num++;
+        }
+
+        return happyNumbers;
+      }
+      const firstFiveHappyNumbers = findHappyNumbers(5);
+      const output = document.getElementById("happyNumbers");
+
+      firstFiveHappyNumbers.forEach((number) => {
+        let listItem = document.createElement("li");
+        listItem.textContent = number;
+        output.appendChild(listItem);
+      });
+    </script>
+  </body>
+</html>

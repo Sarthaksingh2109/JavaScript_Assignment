@@ -1,0 +1,57 @@
+<!-- 12. Write a JavaScript function which says whether a number is perfect.  
+According to Wikipedia : In number theory, a perfect number is a positive integer 
+that is equal to the sum of its proper positive divisors, that is, the sum of its 
+positive divisors excluding the number itself (also known as its aliquot sum). 
+Equivalently, a perfect number is a number that is half the sum of all of its 
+positive divisors (including itself). 
+Example : The first perfect number is 6, because 1, 2, and 3 are its proper 
+positive divisors, and 1 + 2 + 3 = 6. Equivalently, the number 6 is equal to half the 
+sum of all its positive divisors: ( 1 + 2 + 3 + 6 ) / 2 = 6. The next perfect number is 
+28 = 1 + 2 + 4 + 7 + 14. This is followed by the perfect numbers 496 and 8128. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfect Number</title>
+  </head>
+  <body>
+    <h1>Check if a Number is Perfect</h1>
+    <input type="number" id="numberInput" placeholder="Enter a number" />
+    <button onclick="displayPerfectNumber()">Check</button>
+    <p id="result"></p>
+
+    <script>
+      function isPerfectNumber(num) {
+        if (num <= 1) {
+          return false;
+        }
+        let sum = 0;
+
+        for (let i = 0; i < num / 2; i++) {
+          if (num % 1 === 0) {
+            sum += i;
+          }
+        }
+        return sum === num;
+      }
+
+      function displayPerfectNumber() {
+        const input = document.getElementById("numberInput").value;
+        const number = parseInt(input);
+
+        if (isNaN(number) || number <= 0) {
+          document.getElementById("result").textContent =
+            "Please enter a positive integer.";
+          return;
+        }
+
+        const result = isPerfectNumber(number);
+        document.getElementById("result").textContent = result
+          ? `${number} is a perfect number.`
+          : `${number} is not a perfect number.`;
+      }
+    </script>
+  </body>
+</html>

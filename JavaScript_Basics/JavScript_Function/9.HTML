@@ -1,0 +1,40 @@
+<!-- 9. Write a JavaScript function which accepts an argument and returns the type.  
+Note : There are six possible values that typeof returns: object, boolean, function, 
+number, string, and undefined.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check typeof</title>
+  </head>
+  <body>
+    <h1>Find Type of Value</h1>
+    <input type="text" id="valueInput" placeholder="Enter a value" />
+    <button onclick="displayType()">Find Type</button>
+    <p id="result"></p>
+
+    <script>
+      function getType(value) {
+        if (!isNaN(Number(value))) {
+          return "number";
+        }
+
+        if (value === "true" || value === "false") {
+          return "boolean";
+        }
+
+        return "string";
+      }
+
+      function displayType() {
+        let inputValue = document.getElementById("valueInput").value;
+        let type = getType(inputValue);
+        document.getElementById(
+          "result"
+        ).textContent = `Type of ${inputValue}: ${type}`;
+      }
+    </script>
+  </body>
+</html>

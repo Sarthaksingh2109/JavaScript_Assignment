@@ -1,0 +1,45 @@
+<!-- 11. Write a JavaScript function which will take an array of numbers stored and 
+find the second lowest and second greatest numbers, respectively.  
+Sample array : [1,2,3,4,5] 
+Expected Output : 2,4   -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>second lowest and greatest\ number</title>
+  </head>
+  <body>
+    <h1>Find Second Lowest and Second Greatest Numbers</h1>
+    <input
+      type="text"
+      id="arrayInput"
+      placeholder="Enter numbers separated by commas"
+    />
+    <button onclick="displaySecondLowestAndGreatest()">Find</button>
+    <p id="result"></p>
+
+    <script>
+      function secondLowestAndGreatest(arr) {
+        if (arr.length < 2) {
+          throw new Error("Array must contain at least two elements.");
+        }
+
+        let sortedArr = arr.slice().sort((a, b) => a - b);
+        let secondLowest = sortedArr[1];
+        let secondGreatest = sortedArr[arr.length - 2];
+
+        return [secondLowest, secondGreatest];
+      }
+
+      function displaySecondLowestAndGreatest() {
+        let input = document.getElementById("arrayInput").value;
+        let array = input.split(",").map(Number);
+
+        const result = secondLowestAndGreatest(array);
+        document.getElementById("result").textContent = result;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!-- 7. Write a JavaScript program to check whether a number is even or not. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check Even or not</title>
+  </head>
+  <body>
+    <h1>Check Even Number using Recursion</h1>
+    <form id="evenCheckForm">
+      <label for="number">Enter a number:</label>
+      <input type="number" id="number" name="number" required />
+      <button type="submit">Check Even</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+      document
+        .getElementById("evenCheckForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          let number = parseInt(document.getElementById("number").value);
+          let result = even(number) ? "even" : "odd";
+          document.getElementById(
+            "result"
+          ).textContent = `${number} is : ${result}`;
+        });
+      function even(n) {
+        if (n === 0) {
+          return true;
+        } else if (n === 1) {
+          return false;
+        } else {
+          return even(n - 2);
+        }
+      }
+    </script>
+  </body>
+</html>

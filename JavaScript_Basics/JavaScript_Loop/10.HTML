@@ -1,0 +1,39 @@
+<!-- 10. Write a JavaScript program to construct the following pattern, using a nested 
+for loop.  
+*   
+* *   
+* * *   
+* * * *   
+* * * * *    -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Star Pattern</title>
+  </head>
+  <body>
+    <h1>Star Pattern</h1>
+    <label for="lines">Enter number of lines:</label>
+    <input type="number" id="lines" name="lines" min="1" required />
+    <button onclick="generatePattern()">Generate Pattern</button>
+    <pre id="pattern"></pre>
+
+    <script>
+      function generatePattern() {
+        const lines = parseInt(document.getElementById("lines").value);
+        let pattern = "";
+
+        for (let i = 1; i <= lines; i++) {
+          for (let j = 1; j <= i; j++) {
+            pattern += "* ";
+          }
+          pattern += "\n";
+        }
+
+        document.getElementById("pattern").textContent = pattern;
+      }
+    </script>
+  </body>
+</html>

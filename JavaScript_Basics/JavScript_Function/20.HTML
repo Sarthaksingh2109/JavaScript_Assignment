@@ -1,0 +1,48 @@
+<!-- 20. Write a JavaScript function that generates a string id (specified length) of 
+random characters.  
+Sample character list : 
+"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012345678
+ 9"  -->
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Generate Random ID</title>
+ </head>
+ <body>
+     <h1>Generate Random ID of Specified Length</h1>
+     <form id="idForm">
+         <label for="idLength">Enter the length of the ID:</label>
+         <input type="number" id="idLength" name="idLength" required />
+         <br />
+         <button type="submit">Generate</button>
+     </form>
+     <h2>Generated ID:</h2>
+     <p id="generatedId"></p>
+ 
+     <script>
+         document.getElementById("idForm").addEventListener("submit", function(event){
+             event.preventDefault();
+ 
+             let idLength = Number(document.getElementById("idLength").value);
+             let generatedId = generateRandomId(idLength);
+             document.getElementById('generatedId').innerText = generatedId;
+         });
+ 
+         function generateRandomId(length) {
+             const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+             let result = "";
+             const charactersLength = characters.length;
+             for (let i = 0; i < length; i++){
+                 const randomIndex = Math.floor(Math.random() * charactersLength);
+                 result += characters[randomIndex];
+             }
+             return result;
+         }
+     </script>
+ </body>
+ </html>
+ 
